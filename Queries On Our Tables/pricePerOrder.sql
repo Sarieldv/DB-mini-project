@@ -1,3 +1,3 @@
-select orderid, sum(price) as totalPrice
-from (select priceperunit * amount as price, orderid from product natural join productinorder)
-group by orderid;
+SELECT orderid, sum(price) AS totalPrice, dateOfOrderPlacement
+FROM (SELECT priceperunit * amount AS price, orderid FROM product NATURAL JOIN productinorder) NATURAL JOIN orderTable
+GROUP BY orderid, dateOfOrderPlacement;
